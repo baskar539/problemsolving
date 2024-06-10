@@ -1,0 +1,35 @@
+# find the common characters in all the strings in the array in Python
+words = ["cool", "lock","saleeoo"]
+char_counts ={i: {} for i in range(len(words))}
+final_chars=[]
+result_char={}
+is_present={}
+
+# take the count of all the characters in the words array
+for i in range(0,len(words)):
+  for j in words[i]:
+    if j in char_counts[i]:
+      char_counts[i][j] += 1
+    else: char_counts[i][j]=1
+
+# check if the character is present in all the words
+
+# initialise the is_present default as True
+for p in words[0]:
+  is_present[p] =True
+
+for k in words[0]:
+  for l in range(1, len(words)):
+    if k not in words[l]:
+      is_present[k]= False
+
+for s in words[0]:
+  for t in range(1,len(words)):
+    if is_present[s] == True:
+      if char_counts[0][s]>= char_counts[t][s]:
+        result_char[s] = char_counts[t][s]
+for w in result_char:
+  for a in range(0,result_char[w]):
+    final_chars.append(w)
+print(result_char)
+print(final_chars)
